@@ -25,12 +25,6 @@ export const deletingTodo = (
       } catch {
         handleError(Errors.DeleteTodo, setError);
       }
-      // } finally {
-      //   setPendingTodosId((prevState: number[]) => {
-      //     const indexOfId = prevState.findIndex(ids => ids === id);
-      //
-      //     return prevState.splice(indexOfId, 1);
-      //   });}
     }),
   );
 };

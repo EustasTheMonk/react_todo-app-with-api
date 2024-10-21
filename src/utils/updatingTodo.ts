@@ -26,7 +26,7 @@ export const updatingTodo = (
         );
       } catch {
         handleError(Errors.UpdateTodo, setError);
-        throw new Error('Unable to update');
+        throw new Error(Errors.UpdateTodo);
       }
     }),
   );

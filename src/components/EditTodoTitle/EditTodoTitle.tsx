@@ -49,7 +49,7 @@ export const EditTodoTitle: React.FC<Props> = ({
       return;
     }
 
-    if (!titleName) {
+    if (!titleName.trim()) {
       handleChangeTodo(onDeleteTodo, [todo.id]);
 
       return;

@@ -47,8 +47,8 @@ export const App: React.FC = () => {
       setTodos,
       setPendingTodosId,
     )
-      .catch(() => {
-        throw new Error('unable to change');
+      .catch(error => {
+        throw error;
       })
       .finally(() => setPendingTodosId([]));
   };
@@ -85,6 +85,7 @@ export const App: React.FC = () => {
   }
 
   const preparedTodos = getPreparedTodos(todos, filterInstructions);
+  const shouldFooterBeShown = !!todos.length || !!tempTodo;
 
   return (
     <div className="todoapp">
@@ -110,7 +111,7 @@ export const App: React.FC = () => {
           pendingTodosId={pendingTodosId}
         />
 
-        {!!todos.length && (
+        {shouldFooterBeShown && (
           <Footer
             unfinishedTodoAmount={unfinishedTodoIds.length}
             filterInstructions={filterInstructions}
