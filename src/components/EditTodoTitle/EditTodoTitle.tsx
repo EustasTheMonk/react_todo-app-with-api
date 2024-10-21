@@ -60,7 +60,9 @@ export const EditTodoTitle: React.FC<Props> = ({
         ...todo,
         title: titleName.trim(),
       },
-    ]).then(() => setIsEditing(false));
+    ])
+      .then(() => setIsEditing(false))
+      .finally(() => inputField.current?.focus());
   };
 
   return (

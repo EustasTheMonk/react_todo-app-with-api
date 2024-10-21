@@ -5,7 +5,7 @@ import { UserWarning } from './UserWarning';
 import { Todo } from './types/Todo';
 import { TodoList } from './components/TodoList/TodoList';
 import { FilterTypes } from './types/FilterTypes';
-import { getPreparedTodos } from './utils/GetPrepatedTodos';
+import { getPreparedTodos } from './utils/GetPreparedTodos';
 import { getIdsOfActiveTodos } from './utils/getAmountOfActiveTodos';
 import { Footer } from './components/Footer/Footer';
 import { Errors } from './utils/Errors';
