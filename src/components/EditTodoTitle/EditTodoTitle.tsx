@@ -27,10 +27,6 @@ export const EditTodoTitle: React.FC<Props> = ({
 
   const inputField = useRef<HTMLInputElement | null>(null);
 
-  useEffect(() => {
-    inputField.current?.focus();
-  }, [todo]);
-
   const checkPressedKey = (key: string) => {
     if (key === 'Escape') {
       handleChangeTitle(todo.title);
@@ -43,13 +39,15 @@ export const EditTodoTitle: React.FC<Props> = ({
       event.preventDefault();
     }
 
-    if (titleName === todo.title) {
+    const normalizedTitleName = titleName.trim();
+
+    if (normalizedTitleName === todo.title) {
       setIsEditing(false);
 
       return;
     }
 
-    if (!titleName.trim()) {
+    if (!normalizedTitleName) {
       handleChangeTodo(onDeleteTodo, [todo.id]);
 
       return;
@@ -64,6 +62,10 @@ export const EditTodoTitle: React.FC<Props> = ({
       .then(() => setIsEditing(false))
       .finally(() => inputField.current?.focus());
   };
+
+  useEffect(() => {
+    inputField.current?.focus();
+  }, [todo]);
 
   return (
     <form onSubmit={handleSubmit}>

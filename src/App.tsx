@@ -26,10 +26,6 @@ export const App: React.FC = () => {
   const [tempTodo, setTempTodo] = useState<Todo | null>(null);
   const [pendingTodosId, setPendingTodosId] = useState<number[]>([]);
 
-  useEffect(() => {
-    handleGetTodos(setTodos, setErrorMessage);
-  }, []);
-
   const handleDeleteTodo = (ids: number[]): Promise<void[] | void> => {
     return deletingTodo(ids, setErrorMessage, setTodos, setPendingTodosId).then(
       () => setPendingTodosId([]),
@@ -79,6 +75,10 @@ export const App: React.FC = () => {
       })),
     );
   };
+
+  useEffect(() => {
+    handleGetTodos(setTodos, setErrorMessage);
+  }, []);
 
   if (!USER_ID) {
     return <UserWarning />;
